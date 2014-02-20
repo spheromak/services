@@ -1,5 +1,11 @@
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do
+  add_filter 'etcd'
+  add_filter 'coverage'
+  add_filter 'spec'
+  add_filter '.bundle'
+
+end
 require_relative '../lib/services.rb'
 
 require 'uuid'
