@@ -1,0 +1,15 @@
+AllCops:
+  Includes:
+    - Gemfile
+    - lib/**
+  Excludes:
+    - test/**
+    - vendor/**
+
+Encoding:
+  Exclude:
+    - metadata.rb
+    - Gemfile
+
+LineLength:
+  Max: 100
