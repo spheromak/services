@@ -16,6 +16,8 @@ module Etcd
         './etcd/etcd'
       elsif !!ENV['ETCD_BIN']
         ENV['ETCD_BIN']
+      elsif File.exists? '/usr/local/bin/etcd'
+        '/usr/local/bin/etcd'
       else
         fail 'etcd binary not found., you need to set ETCD_BIN'
       end

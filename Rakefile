@@ -12,7 +12,7 @@ end
 
 namespace :test do
   RSpec::Core::RakeTask.new("spec") do |t|
-    t.rspec_opts = '--color -f d --fail-fast'
+    t.rspec_opts = '--color --fail-fast'
   end
 
   begin
