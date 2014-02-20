@@ -7,9 +7,7 @@ AllCops:
     - vendor/**
 
 Encoding:
-  Exclude:
-    - metadata.rb
-    - Gemfile
+  Enabled: false
 
 LineLength:
   Max: 100
