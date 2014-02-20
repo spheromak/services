@@ -3,5 +3,11 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in etcd.gemspec
 gemspec
 gem 'etcd', '~> 0.0.6'
-gem 'simplecov'
-gem 'rubocop'
+
+group :dev do
+  gem 'simplecov'
+  gem 'rubocop'
+  gem 'uuid'
+  # aparently macaddr has broken gem dep
+  gem 'systemu'
+end
