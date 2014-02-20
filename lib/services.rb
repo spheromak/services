@@ -22,12 +22,12 @@ module Services
 
     def get(*args)
       Chef::Log.debug "connection.get args #{args}" unless run_context.nil?
-      @connection.get(*args)
+      connection.get(*args)
     end
 
     def set(*args)
       Chef::Log.debug "connection.set args #{args}" unless run_context.nil?
-      @connection.set(*args)
+      connection.set(*args)
     end
 
     # return a list of all services
