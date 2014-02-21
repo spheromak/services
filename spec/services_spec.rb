@@ -40,6 +40,17 @@ describe 'Services' do
     Services.get('/BLARGH!@#@!').should eql nil
   end
 
+  it 'gets all services' do
+    a = Services.all
+    a.count.should eql 2
+    a[0].members.map { |m| m.name }.sort.should eql %w{test_member test_member2}
+  end
+
+  it 'lists subscribed services' do
+    Services.subscribed('test').should eql []
+    Services.subscribed('test_member').should eql ['test']
+  end
+
   describe '::Entity' do
     before(:each) do
       Services::Connection.new host: 'localhost'

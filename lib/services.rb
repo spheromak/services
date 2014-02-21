@@ -40,9 +40,8 @@ module Services
     # return a list of all services
     def all
       services = []
-      get(KEY).each do |s|
+      get(KEY).node.children.each do |s|
         name = File.basename s.key
-        puts "loading #{name}"
         services << Services::Service.new(name)
       end
       services
@@ -51,9 +50,11 @@ module Services
     # return all services a node is subscribed to
     def subscribed(f = nil)
       fail 'param and run_context can not both be nil' if f.nil? && run_context.nil?
-
-      fqdn = f.nil? ? rteraun_context.node.fqdn : f
-      services = all.map { |s| s.members.include?(fqdn) ? s : nil }
+      fqdn = f.nil? ? run_context.node.fqdn : f
+      services = []
+      all.each do |s|
+        services.concat s.members.map { |m| m.name == fqdn ? s.name : nil }
+      end
       services.compact
     end
   end

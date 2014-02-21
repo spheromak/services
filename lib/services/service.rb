@@ -28,9 +28,7 @@ module Services
     private
 
     def create_if_missing
-      Services.get "#{KEY}/#{name}"
-    rescue Net::HTTPServerException => e
-      Services.set "#{KEY}/#{name}/_created", Time.now if e.message.match 'Not Found'
+      Services.set "#{KEY}/#{name}/_created", Time.now unless Services.exists? "#{KEY}/#{name}"
     end
 
     def load_endpoint
