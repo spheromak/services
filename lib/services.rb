@@ -20,14 +20,21 @@ module Services
   class << self
     attr_accessor :connection, :run_context
 
+    # proxy method to Etcd::Client.get
     def get(*args)
       Chef::Log.debug "connection.get args #{args}" unless run_context.nil?
-      connection.get(*args)
+      connection.get(*args) if exists?(*args)
     end
 
+    # proxy method to Etcd::Client.set
     def set(*args)
       Chef::Log.debug "connection.set args #{args}" unless run_context.nil?
       connection.set(*args)
+    end
+
+    # proxy method to Etcd::Client.exists?
+    def exists?(*args)
+      connection.exists?(*args)
     end
 
     # return a list of all services

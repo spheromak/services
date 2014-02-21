@@ -27,11 +27,17 @@ describe 'Services' do
   end
 
   it 'can set' do
-    Services.set '/test/1', 1
+    s = Services.set('/test/1', 1)
+    s.node.key.should eql '/test/1'
+    s.node.value.should eql '1'
   end
 
   it 'can get' do
-    Services.get '/_etcd/machines'
+    Services.get('/test/1').value.should eql '1'
+  end
+
+  it 'handles unknown keys on get' do
+    Services.get('/BLARGH!@#@!').should eql nil
   end
 
   describe '::Entity' do

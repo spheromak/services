@@ -53,8 +53,10 @@ module Services
       return unless valid_path
       to_hash.each do |k, v|
         next if k == 'name'
-        value =  Services.get("#{KEY}/#{path}/#{k}").value
-        instance_variable_set "@#{k}", value
+        if Services.exists? "#{KEY}/#{path}/#{k}"
+          value =  Services.get("#{KEY}/#{path}/#{k}").value
+          instance_variable_set "@#{k}", value
+        end
       end
       self
     end

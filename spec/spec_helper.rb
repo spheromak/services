@@ -90,14 +90,16 @@ end
 
 RSpec.configure do |config|
 
-  config.include Etcd::SpecHelper
+  unless ENV['ETCD_SKIP']
+    config.include Etcd::SpecHelper
 
-  config.before(:suite) do
-    Etcd::SpecHelper.start_etcd_servers
-  end
+    config.before(:suite) do
+      Etcd::SpecHelper.start_etcd_servers
+    end
 
-  config.after(:suite) do
-    Etcd::SpecHelper.stop_etcd_servers
+    config.after(:suite) do
+      Etcd::SpecHelper.stop_etcd_servers
+    end
   end
   # Use color in STDOUT
   config.color_enabled = true

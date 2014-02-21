@@ -13,6 +13,7 @@ describe 'Services::Service' do
   end
 
   it 'should handle non-existant services' do
-    expect { Services::Service.new 'should_not_exist' }.to_not raise_error
+    a = Services::Service.new 'should_not_exist'
+    a.name.should eql 'should_not_exist'
   end
 end
