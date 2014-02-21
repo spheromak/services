@@ -4,5 +4,5 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'etcd',
-    git: 'https://github.com:spheromak/etcd-ruby.git',
+    git: 'https://github.com/spheromak/etcd-ruby.git',
     branch: 'redirect'
