@@ -45,7 +45,7 @@ module Services
         next if k == 'name'
         # etcd doesn't like nil
         v ||= ''
-        Services.set "#{KEY}/#{path}/#{k}", v
+        Services.set "#{KEY}/#{path}/#{k}", value: v
       end
     end
 
@@ -55,6 +55,7 @@ module Services
         next if k == 'name'
         if Services.exists? "#{KEY}/#{path}/#{k}"
           value =  Services.get("#{KEY}/#{path}/#{k}").value
+          Etcd::Log.debug "Got #{value} from #{KEY}/#{path}/#{k}"
           instance_variable_set "@#{k}", value
         end
       end

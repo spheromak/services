@@ -28,7 +28,8 @@ module Services
     private
 
     def create_if_missing
-      Services.set "#{KEY}/#{name}/_created", Time.now unless Services.exists? "#{KEY}/#{name}"
+      Services.set "#{KEY}/#{name}/_created",
+                   value: Time.now unless Services.exists? "#{KEY}/#{name}"
     end
 
     def load_endpoint
