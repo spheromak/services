@@ -34,6 +34,7 @@ module Services
       @node = args[:run_context].node if run_context
       @host = args[:host]
       @port = args[:port] || 4001
+      @redirect = args[:redirect] || false
       @ssl_verify = args[:verify] || OpenSSL::SSL::VERIFY_NONE
 
       validate
@@ -135,7 +136,7 @@ module Services
     # @param [String] server  ()  The server to try to connect too
     #
     def try_connect(server)
-      c = ::Etcd.client(host: server, port: port)
+      c = ::Etcd.client(host: server, port: port, allow_redirect: @redirect)
       begin
         c.get '/_etcd/machines'
         return c

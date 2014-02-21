@@ -17,7 +17,6 @@ describe 'Services::Endpoint' do
 
   describe '#store' do
     it 'should store' do
-      puts "storing #{@ep.inspect}"
       @ep.store
     end
   end
@@ -42,6 +41,5 @@ describe 'Services::Endpoint' do
       @ep.load
       @ep.ip.should eql '127.0.0.1'
     end
-
   end
 end
