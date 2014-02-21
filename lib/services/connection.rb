@@ -34,7 +34,7 @@ module Services
       @node = args[:run_context].node if run_context
       @host = args[:host]
       @port = args[:port] || 4001
-      @redirect = args[:redirect] || false
+      @redirect = args[:redirect] || true
       @ssl_verify = args[:verify] || OpenSSL::SSL::VERIFY_NONE
 
       validate
