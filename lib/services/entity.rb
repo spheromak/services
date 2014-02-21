@@ -62,12 +62,7 @@ module Services
     end
 
     def valid_path
-      begin
-        Services.get("#{KEY}/#{path}")
-      rescue
-        return false
-      end
-      true
+      Services.exists?("#{KEY}/#{path}")
     end
   end
 end

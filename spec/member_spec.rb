@@ -6,8 +6,12 @@ describe 'Services::Member' do
     @m2 = Services::Member.new 'test_member2', service: 'test', ip: '127.0.0.3', port: 80, weight: 20
   end
 
+  it 'should raise without a service' do
+    expect { Services::Member.new }.to raise_error
+  end
+
   it 'should raise without a service name' do
-    expect { Services::Member.new 'foo' }.to raise_error
+    expect { Services::Member.new 'test_member' }.to raise_error
   end
 
   describe '#to_hash' do
