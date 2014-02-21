@@ -27,7 +27,7 @@ describe 'Services' do
   end
 
   it 'can set' do
-    s = Services.set('/test/1', 1)
+    s = Services.set('/test/1', value: 1)
     s.node.key.should eql '/test/1'
     s.node.value.should eql '1'
   end
