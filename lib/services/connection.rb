@@ -65,12 +65,7 @@ module Services
       require 'etcd'
     rescue LoadError
       if run_context
-        Chef::Log.info 'etcd gem not found. attempting to install'
-        g = Chef::Resource::ChefGem.new 'etcd', run_context
-        g.version '0.0.6'
-        run_context.resource_collection.insert g
-        g.run_action :install
-        require 'etcd'
+        Chef::Log.info 'etcd gem not found. Please install etcd >= 0.2.0'
       end
     end
 
