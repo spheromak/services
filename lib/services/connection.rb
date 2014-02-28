@@ -64,9 +64,7 @@ module Services
     def load_gem
       require 'etcd'
     rescue LoadError
-      if run_context
-        Chef::Log.info 'etcd gem not found. Please install etcd >= 0.2.0'
-      end
+      Chef::Log.info 'etcd gem not found. Please install etcd >= 0.2.0' if run_context
     end
 
     #
