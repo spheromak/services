@@ -6,6 +6,10 @@ SimpleCov.start do
   add_filter '.bundle'
 
 end
+
+require 'coveralls'
+Coveralls.wear!
+
 require_relative '../lib/services.rb'
 
 require 'uuid'
