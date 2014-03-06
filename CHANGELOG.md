@@ -1,3 +1,6 @@
+### 1.0.7
+* update to released etcd 0.2.1 gem
+
 ### 1.0.6
 * update to latest beta of etcd gem for 0.3 server support
 
