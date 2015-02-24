@@ -1,8 +1,8 @@
 #!/bin/bash
-
-wget -c https://go.googlecode.com/files/go1.2.linux-amd64.tar.gz
-tar -zxf go1.2.linux-amd64.tar.gz
-git clone https://github.com/coreos/etcd
-export GOROOT=$PWD/go
-export PATH=$GOROOT/bin:$PATH
-cd etcd && ./build
+set -e
+mkdir $PWD/bin
+cd $PWD/bin
+curl -L https://github.com/coreos/etcd/releases/download/v0.4.6/etcd-v0.4.6-linux-amd64.tar.gz \
+     -o etcd-v0.4.6-linux-amd64.tar.gz
+tar -xzvf etcd-v0.4.6-linux-amd64.tar.gz
+cp etcd-v0.4.6-linux-amd64/* $PWD/bin
