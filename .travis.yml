@@ -6,4 +6,4 @@ rvm:
 branches:
   only:
     - master
-script: "ETCD_BIN=./etcd/bin/etcd bundle exec rake"
+script: "ETCD_BIN=./bin/etcd bundle exec rake"
