@@ -22,11 +22,11 @@ module Etcd
     @@pids =  []
 
     def self.etcd_binary
-      if File.exists? './etcd/etcd'
+      if File.exist? './etcd/etcd'
         './etcd/etcd'
       elsif !!ENV['ETCD_BIN']
         ENV['ETCD_BIN']
-      elsif File.exists? '/usr/local/bin/etcd'
+      elsif File.exist? '/usr/local/bin/etcd'
         '/usr/local/bin/etcd'
       else
         fail 'etcd binary not found., you need to set ETCD_BIN'
@@ -105,8 +105,9 @@ RSpec.configure do |config|
       Etcd::SpecHelper.stop_etcd_servers
     end
   end
+
   # Use color in STDOUT
-  config.color_enabled = true
+ # config.color_enabled = true
 
   # Use color not only in STDOUT but also in pagers and files
   config.tty = true

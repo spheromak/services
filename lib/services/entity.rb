@@ -9,7 +9,7 @@ module Services
   # member,service,endpoint are all "services::entity"
   class Entity
     attr_reader :name, :path
-    def initialize(name, args = {})
+    def initialize(name, _args = {})
       @name = name
       validate
     end
@@ -51,13 +51,13 @@ module Services
 
     def _load
       return unless valid_path
-      to_hash.each do |k, v|
+      to_hash.each do |k, _v|
         next if k == 'name'
-        if Services.exists? "#{KEY}/#{path}/#{k}"
-          value =  Services.get("#{KEY}/#{path}/#{k}").value
-          Etcd::Log.debug "Got #{value} from #{KEY}/#{path}/#{k}"
-          instance_variable_set "@#{k}", value
-        end
+        next unless Services.exists? "#{KEY}/#{path}/#{k}"
+
+        value =  Services.get("#{KEY}/#{path}/#{k}").value
+        Etcd::Log.debug "Got #{value} from #{KEY}/#{path}/#{k}"
+        instance_variable_set "@#{k}", value
       end
       self
     end

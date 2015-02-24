@@ -50,9 +50,8 @@ module Services
     # We require run_context OR host to function
     #
     def validate
-      unless run_context || host
-        fail ArgumentError, 'Must provide a run_context OR host to initialize'
-      end
+      fail ArgumentError, 'Must provide a run_context OR host to initialize' unless
+                                                                             run_context || host
     end
 
     #
@@ -75,7 +74,7 @@ module Services
       return nil unless run_context
       # If there are already servers in attribs use those
       return node[:etcd][:servers] if node.key?(:etcd) &&
-                                  node[:etcd].key?(:servers)
+                                      node[:etcd].key?(:servers)
 
       # if we have already searched in this run use those
       return node.run_state[:etcd_servers] if node.run_state.key? :etcd_servers

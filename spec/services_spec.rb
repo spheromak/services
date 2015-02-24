@@ -43,7 +43,7 @@ describe 'Services' do
   it 'gets all services' do
     a = Services.all
     a.count.should eql 2
-    a[0].members.map { |m| m.name }.sort.should eql %w{test_member test_member2}
+    a[0].members.map(&:name).sort.should eql %w(test_member test_member2)
   end
 
   it 'lists subscribed services' do
@@ -57,7 +57,7 @@ describe 'Services' do
     end
 
     it 'should raise when directly instanced' do
-      expect { Services::Entity.new('foo') }.to  raise_error(RuntimeError)
+      expect { Services::Entity.new('foo') }.to raise_error(RuntimeError)
     end
   end
 end

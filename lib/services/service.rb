@@ -38,24 +38,18 @@ module Services
     end
 
     def fetch_members
-      if Services.exists? "#{KEY}/#{name}/members"
-        Services.get("#{KEY}/#{name}/members").children
-      else
-        nil
-      end
+      Services.get("#{KEY}/#{name}/members").children if Services.exists? "#{KEY}/#{name}/members"
     end
 
     # rubocop:disable MethodLength
     def load_members
       etcd_members = fetch_members
-      unless etcd_members.nil? || etcd_members.empty?
-        etcd_members.each do |m|
-          m_name = File.basename m.key
-          m1 = Services::Member.new(m_name, service: name)
-          m1.load
-          @members.push m1
-        end
-      end
+      etcd_members.each do |m|
+        m_name = File.basename m.key
+        m1 = Services::Member.new(m_name, service: name)
+        m1.load
+        @members.push m1
+      end unless etcd_members.nil? || etcd_members.empty?
     end
   end
 end

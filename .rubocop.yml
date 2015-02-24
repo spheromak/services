@@ -1,13 +1,19 @@
 AllCops:
-  Includes:
+  Include:
     - Gemfile
-    - lib/**
-  Excludes:
-    - test/**
-    - vendor/**
+    - lib/**/*
+  Exclude:
+    - test/**/*
+    - vendor/**/*
+    - spec/**/*
 
 Encoding:
   Enabled: false
 
 LineLength:
   Max: 100
+
+Metrics/AbcSize:
+  Max: 25
+
+

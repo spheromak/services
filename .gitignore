@@ -8,3 +8,4 @@ _yardoc
 coverage
 spec/reports
 tmp
+vendor

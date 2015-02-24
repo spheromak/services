@@ -18,10 +18,8 @@ module Services
     private
 
     def validate
-      unless name && @service
-        fail ARgumentError,
-             "#{self.class} requires name and service argument"
-      end
+      fail ARgumentError,
+           "#{self.class} requires name and service argument" unless name && @service
     end
   end
 end
