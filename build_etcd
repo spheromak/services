@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 mkdir $PWD/bin
-cd $PWD/bin
 curl -L https://github.com/coreos/etcd/releases/download/v0.4.6/etcd-v0.4.6-linux-amd64.tar.gz \
      -o etcd-v0.4.6-linux-amd64.tar.gz
 tar -xzvf etcd-v0.4.6-linux-amd64.tar.gz
